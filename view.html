@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Details</title>
+  <link rel="stylesheet" href="view.css">
+</head>
+<style>
+    body {
+      font-family: Arial;
+      background: #e3f2fd;
+    }
+
+    .box {
+      width: 400px;
+      margin: 50px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 16px;
+    }
+    
+    .btn-center {
+      display: flex;
+      justify-content: center; 
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    button {
+      text-align: center;
+      padding: 10px 25px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+</style>
+
+<body>
+
+<div class="box">
+  <h2>Saved Student Details</h2>
+
+  <p><b>Name:</b> <span id="name"></span></p>
+  <p><b>Email:</b> <span id="email"></span></p>
+  <p><b>Phone:</b> <span id="phone"></span></p>
+  <p><b>Password:</b> ********</p>
+
+  <button onclick="clearData()">Clear Data</button>
+</div>
+
+<div class="btn-center">
+<button onclick="goNext()">Go Next</button>
+</div>
+
+<script>
+function goNext() {
+    window.location.href = "save.html"; 
+  }
+  </script>
+
+<script>
+  document.getElementById("name").innerText =
+    localStorage.getItem("studentName");
+
+  document.getElementById("email").innerText =
+    localStorage.getItem("studentEmail");
+
+  document.getElementById("phone").innerText =
+    localStorage.getItem("studentPhone");
+
+  function clearData() {
+    localStorage.clear();
+    alert("Data cleared");
+    window.location.href = "register.html";
+  }
+</script>
+
+</body>
+</html>

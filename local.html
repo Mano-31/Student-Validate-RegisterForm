@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Registration</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+    }
+    .box {
+      width: 400px;
+      margin: 50px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    input, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+    }
+    button {
+      background: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-center {
+      display: flex;
+      justify-content: center; 
+      margin-top: 20px;
+      width: 150px;   
+      padding: 6px;
+    }
+       
+    button {
+      padding: 10px 25px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Student Registration</h2>
+
+  <input type="text" id="name" placeholder="Enter Name">
+  <input type="email" id="email" placeholder="Enter Email">
+  <input type="text" id="phone" placeholder="Enter Phone">
+  <input type="password" id="password" placeholder="Enter Password">
+
+  <button onclick="saveData()">Save & View data</button>
+</div>
+
+<script>
+function goNext() {
+    window.location.href = ""; 
+  }
+  </script>
+
+<script>
+  function saveData() {
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    if (name === "" || email === "" || phone === "" || password === "") {
+      alert("Please fill all fields");
+      return;
+    }
+
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters");
+      return;
+    }
+
+    localStorage.setItem("studentName", name);
+    localStorage.setItem("studentEmail", email);
+    localStorage.setItem("studentPhone", phone);
+    localStorage.setItem("studentPassword", password);
+
+    alert("Saved Successfully!");
+    window.location.href = "view.html";
+  }
+</script>
+
+</body>
+</html>

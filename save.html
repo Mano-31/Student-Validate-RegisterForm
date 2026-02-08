@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Storage</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f0f4f8;
+    }
+
+    .box {
+      width: 420px;
+      margin: 60px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+    }
+
+    .btn {
+      padding: 6px 14px;
+      font-size: 14px;
+      margin: 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .save { background: green; color: white; }
+    .load { background: blue; color: white; }
+    .clear { background: red; color: white; }
+
+    p {
+      text-align: left;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Data Storage</h2>
+
+  <input type="text" id="name" placeholder="Name">
+  <input type="email" id="email" placeholder="Email">
+  <input type="text" id="phone" placeholder="Phone">
+
+  <div>
+    <button class="btn save" onclick="saveData()">Save</button>
+    <button class="btn load" onclick="loadData()">Load</button>
+    <button class="btn clear" onclick="clearData()">Clear</button>
+  </div>
+
+  <hr>
+
+  <p><b>Name:</b> <span id="vname"></span></p>
+  <p><b>Email:</b> <span id="vemail"></span></p>
+  <p><b>Phone:</b> <span id="vphone"></span></p>
+</div>
+
+<script>
+  function saveData() {
+    localStorage.setItem("name", document.getElementById("name").value);
+    localStorage.setItem("email", document.getElementById("email").value);
+    localStorage.setItem("phone", document.getElementById("phone").value);
+    alert("Data Saved");
+  }
+
+  function loadData() {
+    document.getElementById("vname").innerText =
+      localStorage.getItem("name") || "";
+
+    document.getElementById("vemail").innerText =
+      localStorage.getItem("email") || "";
+
+    document.getElementById("vphone").innerText =
+      localStorage.getItem("phone") || "";
+  }
+
+  function clearData() {
+    localStorage.clear();
+    document.getElementById("vname").innerText = "";
+    document.getElementById("vemail").innerText = "";
+    document.getElementById("vphone").innerText = "";
+    alert("Data Cleared");
+  }
+
+    function loadData() {
+    let name = localStorage.getItem("name");
+    let email = localStorage.getItem("email");
+    let phone = localStorage.getItem("phone");
+
+    // 👉 Check if data exists
+    if (name === null && email === null && phone === null) {
+      alert("❌ Data not found");
+      return;
+    }
+
+    document.getElementById("vname").innerText = name;
+    document.getElementById("vemail").innerText = email;
+    document.getElementById("vphone").innerText = phone;
+  }
+  
+</script>
+
+</body>
+</html>
